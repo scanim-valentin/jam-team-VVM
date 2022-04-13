@@ -4,29 +4,44 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float MovementSpeed ; 
-    public float RotationSpeed ;
-    private Rigidbody2D rig ; 
+    public float movementSpeed ; 
+    public float rotationSpeed ;
+    public float borderX = 6, borderZ = 3.5f;
+    private Rigidbody rig ; 
     // Start is called before the first frame update
     void Start()
     {
-        rig = transform.GetComponent<Rigidbody2D>() ; 
+        rig = transform.GetComponent<Rigidbody>() ; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("z")){
-            rig.AddForce(MovementSpeed*transform.right, ForceMode2D.Impulse);
+        rig.AddForce(movementSpeed * transform.right * Input.GetAxis("Vertical"), ForceMode.Impulse);
+        transform.Rotate(rotationSpeed * Vector3.forward * Input.GetAxis("Horizontal"));
+        ConstraintPosition();
+    }
+
+    private void ConstraintPosition()
+    {
+        if (transform.position.x > borderX)
+        {
+            transform.position = new Vector3(borderX, transform.position.y, transform.position.z);
+        } 
+        else if (transform.position.x < -borderX)
+        {
+            transform.position = new Vector3(-borderX, transform.position.y, transform.position.z);
         }
-        if(Input.GetKey("s")){
-            rig.AddForce(-MovementSpeed*transform.right, ForceMode2D.Impulse);
-        }
-        if(Input.GetKey("d")){
-            transform.Rotate(RotationSpeed*transform.forward) ; 
-        }
-        if(Input.GetKey("q")){
-            transform.Rotate(-RotationSpeed*transform.forward) ;
+
+        if (transform.position.z > borderZ)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, borderZ);
+        } 
+        else if (transform.position.z < -borderZ)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -borderZ);
         }
     }
+
 }
+
