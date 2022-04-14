@@ -5,9 +5,12 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {
 
-    //Default = ??
-    public int HealthValue = 1; 
-    // Start is called before the first frame update
+    public int HealthValue = 20; 
+
+    //event lié à la perte de vie
+    public delegate void DamageDelegate(HealthScript t);
+    public event DamageDelegate damageEvent;
+
     void Start()
     {
         
@@ -20,5 +23,21 @@ public class HealthScript : MonoBehaviour
             //Call death event
             Destroy(gameObject) ; 
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider){
+        GameObject collided = collider.gameObject ; 
+        if(collider.tag == "Bullet"){
+            //Damages
+            if(collided.GetComponent<Trajectory>().Source != gameObject){
+                if (damageEvent != null)
+                    damageEvent(this);
+                HealthValue -= 1 ; 
+                Destroy(collided) ;
+            }
+        } else {
+            Destroy(collided) ;
+        }
+         
     }
 }

@@ -20,8 +20,8 @@ public class ThrowProjectile : MonoBehaviour
         //To be changed later using unity input manager
         if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    GameObject projectileInstance = Instantiate(projectile, transform.localPosition+ new Vector3(2f,0f,0f), transform.rotation);
-                    projectileInstance.GetComponent<Rigidbody2D>().AddForce(throwForce*transform.right, ForceMode2D.Impulse);      
+                    GameObject projectileInstance = Instantiate(projectile, transform.localPosition, transform.rotation);
+                    projectileInstance.GetComponent<Trajectory>().Source = gameObject ;    
                 }
     }
 }
