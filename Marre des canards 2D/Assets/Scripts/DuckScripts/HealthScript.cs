@@ -36,8 +36,9 @@ public class HealthScript : MonoBehaviour
                 Destroy(collided) ;
             }
         } else {
-            Destroy(collided) ;
+            if(collider.tag == "Item"){
+                Destroy(collided) ;
+            }
         }
-         
     }
 }
