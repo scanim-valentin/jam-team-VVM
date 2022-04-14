@@ -19,10 +19,6 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HealthValue == 0){
-            //Call death event
-            Destroy(gameObject) ; 
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
