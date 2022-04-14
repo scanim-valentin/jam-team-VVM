@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float movementSpeed ; 
-    public float rotationSpeed ;
-    public float borderX = 6, borderZ = 3.5f;
-    private Rigidbody rig ; 
+    public float movementSpeed = 1; 
+    public float rotationSpeed = 1;
+    public float borderX = 6, borderY = 3.5f;
+    private Rigidbody2D rig ;
     // Start is called before the first frame update
     void Start()
     {
-        rig = transform.GetComponent<Rigidbody>() ; 
+        rig = transform.GetComponent<Rigidbody2D>() ; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        rig.AddForce(movementSpeed * transform.right * Input.GetAxis("Vertical"), ForceMode.Impulse);
+        rig.AddForce(movementSpeed * transform.right * Input.GetAxis("Vertical"), ForceMode2D.Impulse);
         transform.Rotate(rotationSpeed * Vector3.forward * Input.GetAxis("Horizontal"));
         ConstraintPosition();
     }
@@ -33,14 +33,15 @@ public class Movement : MonoBehaviour
             transform.position = new Vector3(-borderX, transform.position.y, transform.position.z);
         }
 
-        if (transform.position.z > borderZ)
+        if (transform.position.y > borderY)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, borderZ);
+            transform.position = new Vector3(transform.position.x, borderY, transform.position.z);
         } 
-        else if (transform.position.z < -borderZ)
+        else if (transform.position.y < -borderY)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -borderZ);
+            transform.position = new Vector3(transform.position.x, -borderY, transform.position.z);
         }
+
     }
 
 }

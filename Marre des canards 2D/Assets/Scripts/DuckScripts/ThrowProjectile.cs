@@ -8,7 +8,7 @@ public class ThrowProjectile : MonoBehaviour
     public GameObject projectile ; 
 
     //Throwing force of ducks
-    public float throwForce ; 
+    public float throwForce = 10 ; 
     void Start()
     {
         

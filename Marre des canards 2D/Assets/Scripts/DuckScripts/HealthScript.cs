@@ -6,7 +6,7 @@ public class HealthScript : MonoBehaviour
 {
 
     //Default = ??
-    public int HealthValue ; 
+    public int HealthValue = 1; 
     // Start is called before the first frame update
     void Start()
     {
