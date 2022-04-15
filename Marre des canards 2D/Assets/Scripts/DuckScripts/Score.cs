@@ -8,6 +8,13 @@ public class Score : MonoBehaviour
     public int ScoreValue = 0;
 
     private bool isAngry = false;
+    private int AngryThreshold = 3; 
+
+    private bool isEating = false;
+    private float animTime;
+    private float initAnimTime = 1f ;
+    public float frameTime;
+    private float initFrameTime = 0.3f;
 
     //Size of an angry duck
     public float angrySize = 3f;
@@ -27,13 +34,15 @@ public class Score : MonoBehaviour
         normalSprite = transform.GetChild(0).gameObject;
         angrySprite = transform.GetChild(1).gameObject;
         eatingSprite = transform.GetChild(2).gameObject;
+        animTime = initAnimTime;
+        frameTime = initFrameTime; 
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isAngry && (ScoreValue >= 1))
+        if (!isAngry && (ScoreValue >= AngryThreshold ))
         {
             angrySprite.SetActive(true);
             normalSprite.SetActive(false);
@@ -44,6 +53,40 @@ public class Score : MonoBehaviour
         if( isAngry && (transform.localScale.x <= angrySize )  )
         {
             transform.localScale *= rescalingSpeed * (1f + Time.deltaTime);
+        }
+
+        if(isEating)
+        {
+            if (animTime > 0) {
+                animTime -= Time.deltaTime; 
+                if (frameTime >= initFrameTime)
+                {
+                    if (eatingSprite.activeSelf)
+                    {
+                        eatingSprite.SetActive(false);
+                        normalSprite.SetActive(true);
+                    }
+                    else
+                    {
+
+                        eatingSprite.SetActive(true);
+                        normalSprite.SetActive(false);
+                    }
+                    frameTime -= Time.deltaTime;
+                }
+                else
+                {
+                    frameTime = (frameTime >= 0) ? (frameTime - Time.deltaTime) : (initFrameTime);  
+                }
+            }
+            else
+            {
+                animTime = initAnimTime;
+                isEating = false;
+                eatingSprite.SetActive(false);
+                normalSprite.SetActive(true);
+            }
+
         }
 
     }
@@ -61,6 +104,8 @@ public class Score : MonoBehaviour
             if(collider.tag == "Item"){
                 AddToScore(1); 
                 Destroy(collided) ;
+                if(!isAngry)
+                    isEating = true;  
             }
         }
     }
