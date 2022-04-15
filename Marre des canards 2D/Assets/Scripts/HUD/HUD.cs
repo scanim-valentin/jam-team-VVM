@@ -6,25 +6,35 @@ using UnityEngine;
 public class HUD : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject ScoreRouge ; 
-    public GameObject ScoreBleu ; 
-    public GameObject ScoreVert ; 
-    public GameObject ScoreRose ; 
+    public Transform TextDisplay ; 
+    private float timeStartLeft ; 
+    private float timeStartInit = 4 ; 
+    private bool hasStarted = false ; 
+    //event lié au début de la game
+    public delegate void GameHasStartedDelegate(HUD t);
+    public event GameHasStartedDelegate gameHasStartedEvent;
     void Start()
     {
-       //public Text Test_Text = "Fait chier";
+       timeStartLeft = timeStartInit ; 
+       //TextDisplay = transform.Find("Canvas/TextDisplay") ; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ScoreBleu = HUD.GetComponent<UnityEngine.UI.Text>();
-        //ScoreBleu.text = "test";
-        ScoreBleu.GetComponent<UnityEngine.UI.Text>().text = "Score : Bleu";
-        ScoreRouge.GetComponent<UnityEngine.UI.Text>().text = "Score : Rouge";
-        ScoreRose.GetComponent<UnityEngine.UI.Text>().text = "Score : Rose";
-        ScoreVert.GetComponent<UnityEngine.UI.Text>().text = "Score : Vert";
-        //ScoreBleu.Text = "test";
-        //EncoreUnTest.GetComponent<UnityEngine.UI.Text>().text = "Tu vas marcher oui ???";
+        if(!hasStarted){
+            timeStartLeft -= Time.deltaTime ; 
+            if(timeStartLeft > 0 )
+                TextDisplay.GetComponent<UnityEngine.UI.Text>().text = ""+Mathf.Floor(timeStartLeft);
+            else{
+                TextDisplay.GetComponent<UnityEngine.UI.Text>().text = "" ; 
+                hasStarted = true ;
+                if(gameHasStartedEvent != null)
+                    gameHasStartedEvent(this) ;  
+            }
+        }
+        
     }
+
+    
 }

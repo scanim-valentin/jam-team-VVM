@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     public int ScoreValue = 0;
 
     private bool isAngry = false;
-    private int AngryThreshold = 3; 
+    private int AngryThreshold = 1; 
 
     private bool isEating = false;
     private float animTime;
@@ -120,7 +120,7 @@ public class Score : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && collision.gameObject != gameObject)
+        if ( collision.gameObject.tag == "Player" && collision.gameObject != gameObject)
         {
             transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse);
         }

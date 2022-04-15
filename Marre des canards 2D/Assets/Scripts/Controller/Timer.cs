@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public float remainingTime;
     private float initTime = 10 ;
 
-    //event lié à la fin du timer
+    //event liï¿½ ï¿½ la fin du timer
     public delegate void timerExpirationDelegate(Timer t);
     public event timerExpirationDelegate timerExpirationEvent;
     void Start()
@@ -26,4 +26,5 @@ public class Timer : MonoBehaviour
                 timerExpirationEvent(this); 
         }
     }
+
 }
