@@ -21,11 +21,13 @@ public class Score : MonoBehaviour
     private GameObject normalSprite;
     private GameObject eatingSprite;
     private GameObject angrySprite;
+
     void Start()
     {
         normalSprite = transform.GetChild(0).gameObject;
         angrySprite = transform.GetChild(1).gameObject;
         eatingSprite = transform.GetChild(2).gameObject;
+
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Score : MonoBehaviour
 
         if( isAngry && (transform.localScale.x <= angrySize )  )
         {
-            transform.localScale *= rescalingSpeed*(1f+Time.deltaTime) ; 
+            transform.localScale *= rescalingSpeed * (1f + Time.deltaTime);
         }
 
     }
