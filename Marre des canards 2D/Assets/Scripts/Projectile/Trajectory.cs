@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trajectory : MonoBehaviour
 {
-    private float projectileSpeed = 5; 
+    public float projectileSpeed = 5; 
     public GameObject Source ; 
     // Start is called before the first frame update
     void Start()

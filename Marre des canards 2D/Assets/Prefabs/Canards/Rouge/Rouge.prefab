@@ -307,6 +307,7 @@ MonoBehaviour:
   rotationSpeed: 1
   borderX: 4.5
   borderY: 3
+  PlayerID: 2
 --- !u!50 &7350628574825836310
 Rigidbody2D:
   serializedVersion: 4
@@ -341,6 +342,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreValue: 0
+  frameTime: 0
+  angrySize: 3
+  regularSize: 1
+  rescalingSpeed: 1.005
 --- !u!114 &6143882661384314458
 MonoBehaviour:
   m_ObjectHideFlags: 0

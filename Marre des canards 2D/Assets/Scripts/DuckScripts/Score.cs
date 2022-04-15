@@ -18,9 +18,12 @@ public class Score : MonoBehaviour
 
     //Size of an angry duck
     public float angrySize = 3f;
+    public float regularSize = 1f; 
 
     //Speed at which the duck changes scale when bread bar is full
     public float rescalingSpeed = 1.005f;
+
+    private float KnockbackForce = 5f; 
 
     //event lié à la perte de vie
     public delegate void UpdateScoreDelegate(Score t);
@@ -55,7 +58,12 @@ public class Score : MonoBehaviour
             transform.localScale *= rescalingSpeed * (1f + Time.deltaTime);
         }
 
-        if(isEating)
+        if (!isAngry && (transform.localScale.x > regularSize))
+        {
+            transform.localScale *= (1/rescalingSpeed) * (1f + Time.deltaTime);
+        }
+
+        if (isEating)
         {
             if (animTime > 0) {
                 animTime -= Time.deltaTime; 
@@ -94,19 +102,25 @@ public class Score : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider){
         //Debug.Log("Col"); 
         GameObject collided = collider.gameObject ; 
-        if(collider.tag == "Bullet" && isAngry){
+        if(collider.tag == "Bullet"){
             //Taking damage when angry
             if(collided.GetComponent<Trajectory>().Source != gameObject){
-                AddToScore(-1); 
                 Destroy(collided) ;
+                transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse); 
+                if (isAngry)
+                    AddToScore(-1);
+                
             }
-        } else {
-            if(collider.tag == "Item"){
+        } else if (collider.tag == "Item"){
                 AddToScore(1); 
                 Destroy(collided) ;
                 if(!isAngry)
                     isEating = true;  
             }
+
+        else if (collider.tag == "Player")
+        {
+            transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse);
         }
     }
 
