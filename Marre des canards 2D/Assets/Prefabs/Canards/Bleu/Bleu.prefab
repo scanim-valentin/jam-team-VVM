@@ -96,8 +96,8 @@ GameObject:
   - component: {fileID: 5280822280569421595}
   - component: {fileID: 5280822280569421592}
   - component: {fileID: 1243765474513580057}
-  - component: {fileID: 6474776725561174776}
   - component: {fileID: -3638880458706049342}
+  - component: {fileID: 260186494776541392}
   m_Layer: 6
   m_Name: Bleu
   m_TagString: Player
@@ -175,32 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3273771687057820199, guid: d8b42510896390b828279f546c982836, type: 3}
   throwForce: 10
---- !u!61 &6474776725561174776
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280822280569421669}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.12, y: -0.12}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.69, y: 0.67}
-  m_EdgeRadius: 0
 --- !u!114 &-3638880458706049342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +192,52 @@ MonoBehaviour:
   angrySize: 3
   regularSize: 1
   rescalingSpeed: 1.005
+  forceLimiter: 2
+--- !u!60 &260186494776541392
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280822280569421669}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.49, y: 0.18518531}
+      - {x: 0.326818, y: 0.22052419}
+      - {x: 0.20081854, y: 0.20368779}
+      - {x: 0.095116615, y: 0.13748085}
+      - {x: -0.07370615, y: 0.041686773}
+      - {x: -0.24041224, y: 0.00018322468}
+      - {x: -0.46623135, y: -0.012060761}
+      - {x: -0.6229647, y: -0.10196099}
+      - {x: -0.4787888, y: -0.18964136}
+      - {x: -0.2697451, y: -0.16391301}
+      - {x: -0.07827163, y: -0.23059916}
+      - {x: 0.2517016, y: -0.43413138}
+      - {x: 0.40486622, y: -0.45716882}
+      - {x: 0.5791348, y: -0.39552307}
+      - {x: 0.68462133, y: -0.26018578}
+      - {x: 0.85071063, y: -0.22904402}
+      - {x: 0.9302952, y: -0.13734859}
+      - {x: 0.8939631, y: -0.035272658}
+      - {x: 0.689132, y: 0.0035179853}
+      - {x: 0.646559, y: 0.08929449}
 --- !u!1 &5280822282163837540
 GameObject:
   m_ObjectHideFlags: 0

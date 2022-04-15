@@ -45,29 +45,6 @@ public class Movement : MonoBehaviour
     {
         rig.AddForce(movementSpeed * transform.right * Input.GetAxis(VerticalAxis), ForceMode2D.Impulse);
         transform.Rotate(rotationSpeed * Vector3.forward * Input.GetAxis(HorizontalAxis));
-        ConstraintPosition();
-    }
-
-    private void ConstraintPosition()
-    {
-        if (transform.position.x > borderX)
-        {
-            transform.position = new Vector3(borderX, transform.position.y, transform.position.z);
-        } 
-        else if (transform.position.x < -borderX)
-        {
-            transform.position = new Vector3(-borderX, transform.position.y, transform.position.z);
-        }
-
-        if (transform.position.y > borderY)
-        {
-            transform.position = new Vector3(transform.position.x, borderY, transform.position.z);
-        } 
-        else if (transform.position.y < -borderY)
-        {
-            transform.position = new Vector3(transform.position.x, -borderY, transform.position.z);
-        }
-
     }
 
 }

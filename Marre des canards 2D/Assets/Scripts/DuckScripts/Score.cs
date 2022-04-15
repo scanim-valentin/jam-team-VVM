@@ -23,7 +23,9 @@ public class Score : MonoBehaviour
     //Speed at which the duck changes scale when bread bar is full
     public float rescalingSpeed = 1.005f;
 
-    private float KnockbackForce = 5f; 
+    public float KnockbackForce = 5f;
+
+    public float forceLimiter = 2.0f;
 
     //event lié à la perte de vie
     public delegate void UpdateScoreDelegate(Score t);
@@ -112,18 +114,18 @@ public class Score : MonoBehaviour
                 
             }
         } else if (collider.tag == "Item"){
-                AddToScore(1); 
-                Destroy(collided) ;
-                if(!isAngry)
-                    isEating = true;  
-            }
+            AddToScore(1); 
+            Destroy(collided) ;
+            if(!isAngry)
+                isEating = true;  
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if ( collision.gameObject.tag == "Player" && collision.gameObject != gameObject)
         {
-            transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse);
-        }
+            //manger l'autre
+        } 
 
     }
 
