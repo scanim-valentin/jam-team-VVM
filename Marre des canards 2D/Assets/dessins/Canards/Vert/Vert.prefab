@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 7816641716600949682}
   - component: {fileID: 8624774977510514885}
   - component: {fileID: 6639604527335927630}
+  - component: {fileID: 3394343707966141277}
+  - component: {fileID: 402027911420775118}
+  - component: {fileID: 5739013437068230452}
   m_Layer: 6
   m_Name: Vert
   m_TagString: Untagged
@@ -28,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6490400186949801990}
   - {fileID: 410618443572452561}
@@ -72,6 +76,59 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &3394343707966141277
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684893038174163190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12, y: -0.12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.69, y: 0.67}
+  m_EdgeRadius: 0
+--- !u!114 &402027911420775118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684893038174163190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda2d5f38ddf9c37eb3d3685c6f81e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthValue: 20
+--- !u!114 &5739013437068230452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684893038174163190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe8272ff52cef06695470bc8b8dd88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3273771687057820199, guid: d8b42510896390b828279f546c982836, type: 3}
+  throwForce: 10
 --- !u!1 &5295074850491585639
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,9 +139,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6490400186949801990}
   - component: {fileID: 1133849792844449565}
-  - component: {fileID: 6718442434638681541}
-  - component: {fileID: 481288688819819108}
-  - component: {fileID: 837288049677183744}
   m_Layer: 0
   m_Name: 'Canard vert colere '
   m_TagString: Untagged
@@ -102,6 +156,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.9325934, w: 0.36092874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24732003, y: 0.24732003, z: 0.24732}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7816641716600949682}
   m_RootOrder: 0
@@ -117,6 +172,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -146,7 +202,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4adbfae259551c742b27727d27cb90ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4c7c1e800b07a3aaa2c601ac2e38434, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,57 +213,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6718442434638681541
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295074850491585639}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &481288688819819108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295074850491585639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3e4d45614b5639197442d22a19aafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  rotationSpeed: 1
-  borderX: 6
-  borderY: 3.5
---- !u!114 &837288049677183744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295074850491585639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe8272ff52cef06695470bc8b8dd88b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  throwForce: 10
 --- !u!1 &7960221798543039445
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,9 +223,6 @@ GameObject:
   m_Component:
   - component: {fileID: 410618443572452561}
   - component: {fileID: 3320678177807722769}
-  - component: {fileID: 1316633021895189196}
-  - component: {fileID: 8418691194375477987}
-  - component: {fileID: 4357426128443859067}
   m_Layer: 0
   m_Name: 'Canard vert mange '
   m_TagString: Untagged
@@ -238,6 +240,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.9325934, w: 0.36092874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24732003, y: 0.24732003, z: 0.24732}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7816641716600949682}
   m_RootOrder: 1
@@ -253,6 +256,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -282,7 +286,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c10cc16ae7ed9c43acbcff02be9ea5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 324ebde23f51fb5bcb08932290362802, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -293,57 +297,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1316633021895189196
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960221798543039445}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &8418691194375477987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960221798543039445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3e4d45614b5639197442d22a19aafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  rotationSpeed: 1
-  borderX: 6
-  borderY: 3.5
---- !u!114 &4357426128443859067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960221798543039445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe8272ff52cef06695470bc8b8dd88b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  throwForce: 10
 --- !u!1 &8500213435390950858
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,9 +307,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2487269165484623667}
   - component: {fileID: 9138724978622690127}
-  - component: {fileID: 8410497284645617859}
-  - component: {fileID: 6892951173764017955}
-  - component: {fileID: 4821449229683657857}
   m_Layer: 0
   m_Name: Canard vert
   m_TagString: Untagged
@@ -374,6 +324,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.9325934, w: 0.36092874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24732003, y: 0.24732003, z: 0.24732}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7816641716600949682}
   m_RootOrder: 2
@@ -389,6 +340,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -418,7 +370,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c59940c91f800d4c8be32b763d581fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c16981d986e4dc9f8da2027d221ba14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -429,54 +381,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8410497284645617859
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500213435390950858}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &6892951173764017955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500213435390950858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3e4d45614b5639197442d22a19aafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  rotationSpeed: 1
-  borderX: 6
-  borderY: 3.5
---- !u!114 &4821449229683657857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500213435390950858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe8272ff52cef06695470bc8b8dd88b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  throwForce: 10
