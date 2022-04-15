@@ -117,14 +117,17 @@ public class Score : MonoBehaviour
                 if(!isAngry)
                     isEating = true;  
             }
-
-        else if (collider.tag == "Player" && collider != gameObject)
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && collision.gameObject != gameObject)
         {
             transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse);
         }
+
     }
 
-    private void AddToScore(int Value)
+        private void AddToScore(int Value)
     {
         ScoreValue += Value ;
         if (updateScoreEvent != null)
