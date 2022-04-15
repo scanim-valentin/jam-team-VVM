@@ -25,14 +25,18 @@ public class Movement : MonoBehaviour
                 VerticalAxis = "Fire1";
                 HorizontalAxis = "Fire2";
                 break;
-            case 2:
+            /*case 2:
                 VerticalAxis = "Fire3";
                 HorizontalAxis = "Jump";
                 break;
             case 3:
                 VerticalAxis = "MouseX";
                 HorizontalAxis = "MouseY";
-                break; 
+                break; */
+            default:
+                VerticalAxis = "Vertical";
+                HorizontalAxis = "Horizontal";
+                break;
         }
     }
 

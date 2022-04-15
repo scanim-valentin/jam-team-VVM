@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: -3638880458706049342}
   m_Layer: 6
   m_Name: Bleu
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   rotationSpeed: 1
   borderX: 4.5
   borderY: 3
+  PlayerID: 0
 --- !u!50 &5280822280569421592
 Rigidbody2D:
   serializedVersion: 4
@@ -213,6 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreValue: 0
+  frameTime: 0
+  angrySize: 3
+  regularSize: 1
+  rescalingSpeed: 1.005
 --- !u!1 &5280822282163837540
 GameObject:
   m_ObjectHideFlags: 0

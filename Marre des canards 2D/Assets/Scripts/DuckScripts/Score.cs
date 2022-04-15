@@ -118,7 +118,7 @@ public class Score : MonoBehaviour
                     isEating = true;  
             }
 
-        else if (collider.tag == "Player")
+        else if (collider.tag == "Player" && collider != gameObject)
         {
             transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * transform.right, ForceMode2D.Impulse);
         }
