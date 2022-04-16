@@ -39,7 +39,7 @@ public class Score : MonoBehaviour
     //timing variables used to score points when angry
     public float scoreTime;
     public float scoreTimeInit = 0.5f ; 
-
+    private AudioSource audio ; 
     void Start()
     {
         normalSprite = transform.GetChild(0).gameObject;
@@ -48,7 +48,9 @@ public class Score : MonoBehaviour
         animTime = initAnimTime;
         frameTime = initFrameTime;
         scoreTime = scoreTimeInit;
-        PainBarSpriteRenderer = PainBar.GetComponent<SpriteRenderer>(); 
+        PainBarSpriteRenderer = PainBar.GetComponent<SpriteRenderer>();
+        audio = transform.GetComponent<AudioSource>();
+        audio.pitch = Random.Range(1f, 3f);
 
     }
 
@@ -71,6 +73,7 @@ public class Score : MonoBehaviour
             angrySprite.SetActive(true);
             normalSprite.SetActive(false);
             eatingSprite.SetActive(false);
+            audio.pitch = Random.Range(-3f, 1f);
             isAngry = true;
         }
 
@@ -79,6 +82,7 @@ public class Score : MonoBehaviour
             angrySprite.SetActive(false);
             normalSprite.SetActive(true);
             eatingSprite.SetActive(false);
+            audio.pitch = Random.Range(1f, 3f);
             isAngry = false;
         }
 
@@ -147,7 +151,7 @@ public class Score : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
-
+        audio.Play();
         GameObject collided = collider.gameObject ;
         if (collider.tag == "Bullet")
         {
@@ -162,8 +166,11 @@ public class Score : MonoBehaviour
         }
         else if (collider.tag == "Item")
         {
+
             if (BreadValue < AngryThreshold) 
-            { 
+            {
+
+               
                 BreadValue++;
                 PainBarSpriteRenderer.size = new Vector2(BreadValue * 4 / AngryThreshold, PainBarSpriteRenderer.size.y);
             }
@@ -176,6 +183,7 @@ public class Score : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            audio.Play();
             transform.GetComponent<Rigidbody2D>().AddForce(-KnockbackForce * (collision.gameObject.transform.position - transform.position), ForceMode2D.Impulse);
             if (isAngry)
             {
