@@ -73,7 +73,7 @@ public class Score : MonoBehaviour
             angrySprite.SetActive(true);
             normalSprite.SetActive(false);
             eatingSprite.SetActive(false);
-            audio.pitch = Random.Range(-3f, 1f);
+            audio.pitch = Random.Range(0f, 1f);
             isAngry = true;
         }
 
@@ -135,12 +135,22 @@ public class Score : MonoBehaviour
             {
                 animTime = initAnimTime;
                 isEating = false;
+                if (isAngry)
+                {
+                    angrySprite.SetActive(true);
+                    normalSprite.SetActive(false);
+                }
+                else
+                {
+                    normalSprite.SetActive(true);
+                    angrySprite.SetActive(false);
+                }
 
             }
 
-        }
-        else
+        }else if (eatingSprite.activeSelf)
         {
+            eatingSprite.SetActive(false);
             if (isAngry)
             {
                 angrySprite.SetActive(true);
@@ -198,11 +208,4 @@ public class Score : MonoBehaviour
         }
     }
 
-
-    private void AddToScore(int Value)
-    {
-        ScoreValue += Value ;
-        if (updateScoreEvent != null)
-            updateScoreEvent(this);
-    }
 }
