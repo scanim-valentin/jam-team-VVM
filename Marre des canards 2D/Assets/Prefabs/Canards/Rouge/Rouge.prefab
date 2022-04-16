@@ -342,11 +342,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreValue: 0
+  BreadValue: 0
   frameTime: 0
   angrySize: 3
   regularSize: 1
   rescalingSpeed: 1.005
+  KnockbackForce: 5
   forceLimiter: 2
+  PainBar: {fileID: 0}
+  scoreTime: 0
+  scoreTimeInit: 0.5
 --- !u!114 &6143882661384314458
 MonoBehaviour:
   m_ObjectHideFlags: 0

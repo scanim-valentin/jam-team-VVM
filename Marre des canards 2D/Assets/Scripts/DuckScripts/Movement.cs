@@ -11,9 +11,14 @@ public class Movement : MonoBehaviour
     private string VerticalAxis;
     private string HorizontalAxis;
     private Rigidbody2D rig ;
+
+    private bool gameStarted = false; 
     // Start is called before the first frame update
     void Start()
     {
+        //On ajoute s'abonne à l'event gameHasStartedEvent
+        GameObject.Find("HUD").GetComponent<HUD>().gameHasStartedEvent += onGameStart; 
+        
         rig = transform.GetComponent<Rigidbody2D>() ;
         switch (PlayerID)
         {
@@ -43,8 +48,16 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rig.AddForce(movementSpeed * transform.right * Input.GetAxis(VerticalAxis), ForceMode2D.Impulse);
-        transform.Rotate(rotationSpeed * Vector3.forward * Input.GetAxis(HorizontalAxis));
+        if (gameStarted)
+        {
+            rig.AddForce(movementSpeed * transform.right * Input.GetAxis(VerticalAxis), ForceMode2D.Impulse);
+            transform.Rotate(rotationSpeed * Vector3.forward * Input.GetAxis(HorizontalAxis));
+        }
+    }
+
+    void onGameStart(HUD hud)
+    {
+        gameStarted = true; 
     }
 
 }
