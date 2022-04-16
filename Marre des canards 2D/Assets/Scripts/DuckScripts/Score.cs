@@ -98,8 +98,9 @@ public class Score : MonoBehaviour
 
         if (isEating)
         {
-            if (animTime > 0) {
-                animTime -= Time.deltaTime; 
+            if (animTime > 0)
+            {
+                animTime -= Time.deltaTime;
                 if (frameTime >= initFrameTime)
                 {
                     if (eatingSprite.activeSelf)
@@ -127,25 +128,29 @@ public class Score : MonoBehaviour
                 }
                 else
                 {
-                    frameTime = (frameTime >= 0) ? (frameTime - Time.deltaTime) : (initFrameTime);  
+                    frameTime = (frameTime >= 0) ? (frameTime - Time.deltaTime) : (initFrameTime);
                 }
             }
             else
             {
                 animTime = initAnimTime;
                 isEating = false;
-                if (isAngry)
-                {
-                    angrySprite.SetActive(true);
-                    normalSprite.SetActive(false);
-                }
-                else
-                {
-                    normalSprite.SetActive(true);
-                    angrySprite.SetActive(false);
-                }
+
             }
 
+        }
+        else
+        {
+            if (isAngry)
+            {
+                angrySprite.SetActive(true);
+                normalSprite.SetActive(false);
+            }
+            else
+            {
+                normalSprite.SetActive(true);
+                angrySprite.SetActive(false);
+            }
         }
 
     }

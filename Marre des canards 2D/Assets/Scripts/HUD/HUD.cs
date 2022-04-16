@@ -55,7 +55,7 @@ public class HUD : MonoBehaviour
         string winner = ""; 
         if(playerRed.GetComponent<Score>().ScoreValue > playerGreen.GetComponent<Score>().ScoreValue)
         {
-            winner = "Blue";
+            winner = "Red";
         }
         else if(playerRed.GetComponent<Score>().ScoreValue < playerGreen.GetComponent<Score>().ScoreValue)
         {
